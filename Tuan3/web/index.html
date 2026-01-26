@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Patterns Demo - Tuần 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Design Patterns Demo - Tuần 3</h1>
+            <p>Hệ thống quản lý thư mục và tập tin với 3 Design Patterns</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-button active" onclick="showTab('composite')">
+                📁 Composite Pattern
+            </button>
+            <button class="tab-button" onclick="showTab('observer')">
+                👁️ Observer Pattern
+            </button>
+            <button class="tab-button" onclick="showTab('adapter')">
+                🔄 Adapter Pattern
+            </button>
+        </nav>
+
+        <!-- Composite Pattern Tab -->
+        <div id="composite" class="tab-content active">
+            <div class="pattern-section">
+                <h2>📁 Composite Pattern - File System Management</h2>
+                <p>Quản lý cấu trúc cây thư mục và tập tin</p>
+                
+                <div class="demo-controls">
+                    <button onclick="createFileSystem()">🏗️ Tạo File System</button>
+                    <button onclick="addFile()">📄 Thêm File</button>
+                    <button onclick="addDirectory()">📁 Thêm Directory</button>
+                    <button onclick="calculateSize()">📊 Tính Tổng Dung Lượng</button>
+                </div>
+
+                <div class="output-section">
+                    <h3>Cấu trúc File System:</h3>
+                    <div id="file-tree" class="file-tree"></div>
+                    <div id="file-stats" class="stats"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Observer Pattern Tab -->
+        <div id="observer" class="tab-content">
+            <div class="pattern-section">
+                <h2>👁️ Observer Pattern - Notification System</h2>
+                <p>Hệ thống thông báo tự động khi có thay đổi</p>
+                
+                <div class="demo-section">
+                    <h3>📈 Stock Price Notification</h3>
+                    <div class="demo-controls">
+                        <input type="text" id="stock-symbol" placeholder="Mã cổ phiếu (VD: AAPL)" value="AAPL">
+                        <input type="number" id="stock-price" placeholder="Giá" value="150" step="0.01">
+                        <button onclick="updateStockPrice()">📊 Cập nhật giá</button>
+                        <button onclick="addInvestor()">👤 Thêm Investor</button>
+                    </div>
+                    <div id="investors-list" class="observers-list"></div>
+                    <div id="stock-notifications" class="notifications"></div>
+                </div>
+
+                <div class="demo-section">
+                    <h3>📋 Task Status Notification</h3>
+                    <div class="demo-controls">
+                        <input type="text" id="task-name" placeholder="Tên task" value="Implement Login">
+                        <select id="task-status">
+                            <option value="TODO">TODO</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Testing">Testing</option>
+                            <option value="Done">Done</option>
+                        </select>
+                        <button onclick="updateTaskStatus()">🔄 Cập nhật trạng thái</button>
+                        <button onclick="addTeamMember()">👥 Thêm Team Member</button>
+                    </div>
+                    <div id="team-members-list" class="observers-list"></div>
+                    <div id="task-notifications" class="notifications"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Adapter Pattern Tab -->
+        <div id="adapter" class="tab-content">
+            <div class="pattern-section">
+                <h2>🔄 Adapter Pattern - XML ↔ JSON Conversion</h2>
+                <p>Chuyển đổi giữa các định dạng dữ liệu khác nhau</p>
+                
+                <div class="demo-controls">
+                    <div class="input-section">
+                        <h3>📥 Input JSON Data:</h3>
+                        <textarea id="json-input" placeholder='{"user": "john_doe", "action": "login"}'>{"user": "john_doe", "action": "login", "timestamp": "2024-01-26"}</textarea>
+                        <button onclick="processJSON()">🔄 Process JSON</button>
+                    </div>
+                    
+                    <div class="conversion-flow">
+                        <div class="step">
+                            <h4>1️⃣ JSON Input</h4>
+                            <div id="step1-content" class="step-content"></div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="step">
+                            <h4>2️⃣ Convert to XML</h4>
+                            <div id="step2-content" class="step-content"></div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="step">
+                            <h4>3️⃣ Process XML</h4>
+                            <div id="step3-content" class="step-content"></div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="step">
+                            <h4>4️⃣ Convert back to JSON</h4>
+                            <div id="step4-content" class="step-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>💡 Design Patterns Demo - Composite, Observer, Adapter</p>
+     
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
