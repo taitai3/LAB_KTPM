@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  # ── PostgreSQL với data sẵn (stage: data ready) ──────────────
+  postgres:
+    build: ./postgres-data
+    container_name: tuan6-postgres
+    environment:
+      POSTGRES_DB: studentdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5432:5432"
+    networks:
+      - tuan6-network
+
+  # ── Spring Boot App (multi-stage build) ──────────────────────
+  app:
+    build: ./student-service
+    container_name: tuan6-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/studentdb
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin123
+    depends_on:
+      - postgres
+    networks:
+      - tuan6-network
+
+networks:
+  tuan6-network:
+    driver: bridge
